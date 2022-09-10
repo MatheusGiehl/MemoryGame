@@ -1,4 +1,6 @@
-const grid = document.querySelector('.grid')
+const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 
 const characters = [
     'beth',
@@ -100,4 +102,21 @@ const loadGame = () => {
     });
 }
 
-loadGame();
+const startTimer = () => {
+    setInterval(() => {
+        
+        const currentTime = +timer.innerHTML;
+        timer.innerHTML = currentTime +1 ;
+
+    }, 1000);
+}
+
+window.onload = () => {
+    
+    const playerName = localStorage.getItem('player');
+    
+    spanPlayer.innerHTML = playerName ;
+
+    startTimer();
+    loadGame();
+}
